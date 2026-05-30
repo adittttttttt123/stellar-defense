@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Defense: Cosmic Clicker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Menu -->
+        <div id="menu-screen" class="screen active">
+            <div class="menu-content">
+                <h1>STELLAR DEFENSE</h1>
+                <p class="subtitle">Cosmic Clicker</p>
+                <div class="menu-description">
+                    <p>Click enemies to destroy them!</p>
+                    <p>Earn points and build combos</p>
+                </div>
+                <button id="play-button" class="btn-play">PLAY GAME</button>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <canvas id="game-canvas"></canvas>
+            
+            <!-- HUD Overlay -->
+            <div class="hud">
+                <div class="hud-left">
+                    <div class="hud-item">
+                        <label>SCORE</label>
+                        <div id="score-display">0</div>
+                    </div>
+                </div>
+                
+                <div class="hud-center">
+                    <div class="hud-item">
+                        <label>COMBO</label>
+                        <div id="combo-display">x1</div>
+                    </div>
+                </div>
+                
+                <div class="hud-right">
+                    <div class="hud-item">
+                        <label>TIME</label>
+                        <div id="time-display">00:00</div>
+                    </div>
+                    <div class="hud-item">
+                        <label>WAVE</label>
+                        <div id="wave-display">1</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pause Button -->
+            <button id="pause-button" class="btn-pause">⏸</button>
+
+            <!-- Pause Menu -->
+            <div id="pause-menu" class="pause-menu hidden">
+                <div class="pause-content">
+                    <h2>PAUSED</h2>
+                    <button id="resume-button" class="btn-menu">RESUME</button>
+                    <button id="quit-button" class="btn-menu">QUIT</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameover-screen" class="screen">
+            <div class="gameover-content">
+                <h1>GAME OVER</h1>
+                <div class="gameover-stats">
+                    <div class="stat">
+                        <label>Final Score</label>
+                        <div id="final-score">0</div>
+                    </div>
+                    <div class="stat">
+                        <label>Time Survived</label>
+                        <div id="final-time">00:00</div>
+                    </div>
+                    <div class="stat">
+                        <label>Max Combo</label>
+                        <div id="final-combo">x0</div>
+                    </div>
+                </div>
+                <button id="restart-button" class="btn-play">PLAY AGAIN</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="Enemy.js"></script>
+    <script src="EnemyTypes.js"></script>
+    <script src="Portal.js"></script>
+    <script src="Boss.js"></script>
+    <script src="UI.js"></script>
+    <script src="Game.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

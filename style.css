@@ -1,0 +1,317 @@
+/* Retro Pixel Font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #00ff00;
+    --secondary: #ff00ff;
+    --accent: #00ffff;
+    --dark: #0a0e27;
+    --darker: #050812;
+    --danger: #ff0000;
+    --warning: #ff9900;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--darker);
+    color: var(--primary);
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Screens */
+.screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--darker);
+    z-index: 10;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Menu Screen */
+#menu-screen {
+    flex-direction: column;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a0a2e 50%, #16213e 100%);
+}
+
+.menu-content {
+    text-align: center;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.menu-content h1 {
+    font-size: 3rem;
+    color: var(--secondary);
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+}
+
+.menu-content .subtitle {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 40px;
+    text-shadow: 0 0 5px var(--accent);
+}
+
+.menu-description {
+    font-size: 0.7rem;
+    color: var(--primary);
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Buttons */
+.btn-play,
+.btn-menu {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    padding: 15px 40px;
+    background-color: var(--primary);
+    color: var(--darker);
+    border: 3px solid var(--secondary);
+    cursor: pointer;
+    text-shadow: none;
+    transition: all 0.1s;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn-play:hover,
+.btn-menu:hover {
+    background-color: var(--secondary);
+    color: var(--primary);
+    box-shadow: 0 0 10px var(--secondary);
+    transform: scale(1.05);
+}
+
+.btn-play:active,
+.btn-menu:active {
+    transform: scale(0.95);
+}
+
+.btn-pause {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    background-color: rgba(0, 255, 0, 0.2);
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.1s;
+    z-index: 20;
+}
+
+.btn-pause:hover {
+    background-color: rgba(0, 255, 0, 0.4);
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.btn-pause:active {
+    transform: scale(0.95);
+}
+
+/* Game Screen */
+#game-screen {
+    position: relative;
+    background-color: var(--darker);
+    z-index: 5;
+}
+
+#game-canvas {
+    display: block;
+    background-color: var(--dark);
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* HUD */
+.hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(180deg, rgba(10, 14, 39, 0.9) 0%, transparent 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 20px;
+    font-size: 0.6rem;
+    z-index: 15;
+    pointer-events: none;
+}
+
+.hud-left,
+.hud-center,
+.hud-right {
+    display: flex;
+    gap: 30px;
+}
+
+.hud-item {
+    text-align: center;
+}
+
+.hud-item label {
+    display: block;
+    color: var(--accent);
+    font-size: 0.5rem;
+    margin-bottom: 5px;
+}
+
+.hud-item div {
+    color: var(--primary);
+    font-size: 0.8rem;
+    text-shadow: 0 0 5px var(--primary);
+}
+
+/* Pause Menu */
+.pause-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(5, 8, 18, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+}
+
+.pause-menu.hidden {
+    display: none !important;
+}
+
+.pause-menu:not(.hidden) {
+    display: flex;
+}
+
+.pause-content {
+    text-align: center;
+    background-color: rgba(10, 14, 39, 0.95);
+    padding: 40px;
+    border: 3px solid var(--primary);
+    box-shadow: 0 0 20px var(--primary);
+}
+
+.pause-content h2 {
+    font-size: 2rem;
+    color: var(--secondary);
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px var(--secondary);
+}
+
+.pause-content .btn-menu {
+    display: block;
+    margin: 10px auto;
+    width: 200px;
+}
+
+/* Game Over Screen */
+#gameover-screen {
+    flex-direction: column;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a0a2e 50%, #16213e 100%);
+}
+
+.gameover-content {
+    text-align: center;
+}
+
+.gameover-content h1 {
+    font-size: 2.5rem;
+    color: var(--danger);
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px var(--danger);
+}
+
+.gameover-stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 40px;
+    justify-content: center;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.stat div {
+    font-size: 1.2rem;
+    color: var(--primary);
+    text-shadow: 0 0 5px var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .menu-content h1 {
+        font-size: 2rem;
+    }
+    
+    .menu-content .subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .menu-description {
+        font-size: 0.5rem;
+    }
+    
+    .btn-play {
+        font-size: 0.6rem;
+        padding: 10px 25px;
+    }
+    
+    .hud {
+        font-size: 0.5rem;
+        padding: 8px 15px;
+    }
+    
+    .gameover-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* Cursor */
+canvas {
+    cursor: crosshair;
+}
